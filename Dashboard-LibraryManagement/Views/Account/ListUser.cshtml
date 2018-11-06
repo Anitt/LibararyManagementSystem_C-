@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Dashboard_LibraryManagement.Models.UserAccount>
+
+@{
+    ViewBag.Title = "ListUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>ListUser</h2>
+
+    <p>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="SearchValue" autocomplete="on" value="@ViewBag.SearchValue" />
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" name="action" value="Search" class="btn btn-info form-control" />
+                        <input type="submit" name="action" value="Clear" class="btn btn-danger form-control" />
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.ActionLink("Create New", "AddUser", new { }, new { @class = "pull-right btn btn-primary" })
+    </p>
+    <table class="table table-bordered table-hover" style="margin-top:30px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Isadmin)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isadmin)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.UserID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

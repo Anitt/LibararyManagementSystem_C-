@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Dashboard_LibraryManagement.Models.LibMember>
+
+@{
+    ViewBag.Title = "ManageMember";
+}
+
+<h2>ManageMember</h2>
+
+<p>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" name="SearchValue" autocomplete="on" value="@ViewBag.SearchValue" />
+                </div>
+                <div class="col-md-9">
+                    <input type="submit" name="action" value="Search" class="btn btn-default form-control" />
+                    <input type="submit" name="action" value="Clear" class="btn btn-default form-control" />
+                </div>
+            </div>
+        </div>
+    }
+    @Html.ActionLink("New Member", "AddMember", new { }, new { @class = "pull-right btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dob)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dob)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MemberID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MemberID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+	@Html.ActionLink("Back to DashBoard", "Index", "Dashboard")
+</div>

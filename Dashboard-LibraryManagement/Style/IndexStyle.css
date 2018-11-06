@@ -1,0 +1,25 @@
+﻿.indexImage{
+    width: 100%;
+}
+
+.TitleFont{
+    font-style:italic;
+}
+
+.indexGradient {
+    background: linear-gradient(to right,#e8fff0, #ffdcb7);
+}
+
+.cardButtonStyle {
+    background-color: #3b9b28;
+    border-color: #225101;
+    color: white;
+}
+
+.cardButtonStyle :hover {
+        color: yellow;
+    }
+
+.cardButtonStyle :focus{
+    color: yellow;
+}

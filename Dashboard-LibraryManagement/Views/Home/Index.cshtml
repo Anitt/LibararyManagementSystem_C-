@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+@* Adding Custom StyleSheet Link *@
+<link rel="Stylesheet" href="~/Style/IndexStyle.css" type="text/css" />
+<img src="~/Images/IndexImage.png" class="img-rounded indexImage" style="filter:brightness(40%); width:100%;min-height:100%;" />
+@* Title Text with Subtitle Texts in Panels *@
+<div style="position:absolute;top:25%;left:23%;color:white;">
+    <div class="alert" style="border:3px solid white;text-align:center;border-radius:10px;background-color: rgba(0, 0, 0, 0.5);transition: step-end 1s ease 0s;">
+        <h1>Dashboard Library Management</h1>
+    </div>
+ <p>Dashboard Library Management helps the librarian's work easier. We provide tools and services dedicated for Librarians.</p>
+ <div style="text-align:center;">
+     <div class="row" style="margin-top:50px;width:50%;display:inline-block;">
+         <div class="col-sm-4">
+             <button class="btn btn-info btn-lg" style="background-color:transparent" >Signin</button>
+         </div>
+         <div class="col-sm-4">
+             <button class="btn btn-info btn-lg" style="background-color:transparent" >Contact</button>
+         </div>
+         <div class="col-sm-4">
+             <button class="btn btn-danger btn-lg" style="background-color:transparent" >Help</button>
+         </div>
+     </div>
+ </div>
+</div>
+<hr />
+
+@* - Three Card to Navigate the Users.
+        - What's New?
+        - Login Panel
+        - Contribute for the Project
+   - Three Images used for the Card div and images were taken from the Internet. *@
+<div class="container">
+    <div class="card-deck">
+        <div class="card col-md-4">
+            @*Image reference - https://falkschool.pitt.edu/resources/library-resources*@
+            <img class="card-img-top" src="~/Images/card_1.jpg" alt="Library">
+            <div class="card-body">
+                <h4 class="card-title">What's New?</h4>
+                <p class="card-text">We have included the features like Adding Admin in the latest version. Want to try?</p>
+                <a href="~/Account/Register" class="btn cardButtonStyle">Click to create a new Account</a>
+            </div>
+            <hr />
+        </div>
+        <div class="card col-md-4">
+            @*Image taken from - https://www.infoworld.com/article/3048833/open-source-tools/brendan-eich-javascript-standard-library-will-stay-small.html*@
+            <img class="card-img-top" src="~/Images/card_2.jpg" alt="Books">
+            <div class="card-body">
+                <h4 class="card-title">Login Panel</h4>
+                <p class="card-text">Are you lost? And looking for Login page? Click the below button.</p>
+                <a href="~/Account/Login" class="btn cardButtonStyle">Login Page</a>
+            </div>
+            <hr />
+        </div>
+        <div class="card col-md-4">
+            @*Image taken from - https://www.akureyri.is/grimsey/moya/calendar/boxes/1/bokasafnsdagurinn*@
+            <img class="card-img-top" src="~/Images/card_3.jpg" alt="Library">
+            <div class="card-body">
+                <h4 class="card-title">Contribute for the Project</h4>
+                <p class="card-text">We are Open Source and developed using the contribution from our Volunteers.</p>
+                <a href="https://github.com/DalhousieUniversityCSCI5308/Group21" class="btn cardButtonStyle">See Our GitHub</a>
+                @*<p><a href="" class="btn btn-primary btn-lg">View it in GitHub </a></p>*@
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>

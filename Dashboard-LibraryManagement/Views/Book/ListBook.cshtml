@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Dashboard_LibraryManagement.Models.Book>
+
+@{
+    ViewBag.Title = "ListBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>ListBook</h2>
+
+    <p>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="SearchValue" autocomplete="on" value="@ViewBag.SearchValue" />
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" name="action" value="Search" class="btn btn-info form-control" />
+                        <input type="submit" name="action" value="Clear" class="btn btn-danger form-control" />
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.ActionLink("Create New", "AddBook", new { }, new { @class = "pull-right btn btn-primary" })
+    </p>
+    <table class="table table-bordered table-hover" style="margin-top:30px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rackno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rackno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) |
+                    @Html.ActionLink("Delete", "DeleteBook", new { id = item.BookID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

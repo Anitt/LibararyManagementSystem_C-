@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Dashboard_LibraryManagement.Models.Book>
+
+@{
+    ViewBag.Title = "ListBooktranscation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h2>ListBooktranscation</h2>
+    <p>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="SearchValue" autocomplete="on" value="@ViewBag.SearchValue" />
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" name="action" value="Search" class="btn btn-info form-control" />
+                        <input type="submit" name="action" value="Clear" class="btn btn-danger form-control" />
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.ActionLink("Create New", "IssueBook", new { }, new { @class = "pull-right btn btn-primary" })
+    </p>
+    <table class="table table-bordered table-hover" style="margin-top:30px">
+        
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                 <label>Total Count</label>
+                </th>
+                <th></th>
+            </tr>
+ 
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @if (item.Status == Dashboard_LibraryManagement.Models.BookStatus.Available.ToString())
+                {
+                    @Html.ActionLink("Issue", "Issue", new { id = item.BookID })
+                }
+                else
+                {
+                    <button class="btn btn-warning">Not Available</button>
+                }
+            </td>
+			<td>
+				@Html.ActionLink("Renew", "RenewBook", new { id = item.BookID }) |
+				@Html.ActionLink("Return", "ReturnBook", new { id = item.BookID })
+			</td>
+        </tr>
+        }
+
+    </table>
+
+</div>
+
+<div>
+	@Html.ActionLink("Back to DashBoard", "Index", "Dashboard")
+</div>

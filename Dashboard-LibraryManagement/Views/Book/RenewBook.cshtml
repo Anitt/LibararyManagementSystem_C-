@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Dashboard_LibraryManagement.Models.BookTranscation>
+
+@{
+    ViewBag.Title = "RenewBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>RenewBook</h2>
+
+    <p>
+     <br />
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofIssue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateofIssue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Renew", "RenewTransaction", new { id = item.TranscationID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+<div>
+	@Html.ActionLink("Back to DashBoard", "Index", "Dashboard")
+</div>
